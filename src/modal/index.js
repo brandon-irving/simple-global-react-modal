@@ -10,19 +10,21 @@ import {
   modalTitle
 } from './styles'
 
+const defaultClassNames = {
+  modal: [],
+  header: [],
+  content: [],
+  body: [],
+  footer: [],
+  background: []
+}
+
 const InternalModal = (props) => {
   const {
     modal: {
       size = 'md',
       customSize = {},
-      customClassNames = {
-        modal: [],
-        header: [],
-        content: [],
-        body: [],
-        footer: [],
-        background: ['test-class']
-      },
+      customClassNames = {},
       header,
       body,
       title,
@@ -36,10 +38,6 @@ const InternalModal = (props) => {
 
   const desired = (title && <div style={modalTitle}>{title}</div>) || header
 
-  function handleClose() {
-    closeOnBackgroundClick && closeModal()
-  }
-
   const {
     modal: modalClassNames,
     header: headerClassNames,
@@ -47,7 +45,8 @@ const InternalModal = (props) => {
     body: bodyClassNames,
     footer: footerClassNames,
     background: backgroundClassNames
-  } = customClassNames
+  } = { ...defaultClassNames, ...customClassNames }
+
   const classNameGenerator = (classNameArray) =>
     classNameArray.join().replace(',', ' ')
 
@@ -55,6 +54,10 @@ const InternalModal = (props) => {
     return classNameArray.length
       ? { className: classNameGenerator(classNameArray) }
       : { style: defaultStyle }
+  }
+
+  function handleClose() {
+    closeOnBackgroundClick && closeModal()
   }
 
   return (

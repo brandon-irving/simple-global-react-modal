@@ -8,11 +8,8 @@
 
 ```bash
 npm install --save simple-global-react-modal
-```
 
-## Launch Example
-
-```bash
+/***** How to run example *****/
 // terminal 1
 cd simple-global-react-modal
 npm start
@@ -20,7 +17,31 @@ npm start
 // terminal 1
 cd simple-global-react-modal/example
 npm start
+```
 
+## Props
+
+```bash
+const { openModal } = useGlobalModal()
+openModal(openModalProps)
+
+openModalProps = {
+  size = string | 'sm', 'md', 'lg', 'xl',
+  customSize = object | {...CSS.Properties}, // height/width props
+  customClassNames = object | {
+      modal: String[],
+      header: String[],
+      content: String[],
+      body: String[],
+      footer: String[],
+      background: String[]
+  },
+  header = string | React.Component,
+  body = string | React.Component,,
+  title = string | React.Component,,
+  footer = string | React.Component,,
+  closeOnBackgroundClick = boolean
+}
 ```
 
 ## Usage
