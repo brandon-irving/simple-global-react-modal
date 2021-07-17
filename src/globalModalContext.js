@@ -17,7 +17,9 @@ export function GlobalModalProvider(props) {
 
   React.useEffect(() => {}, [])
   return (
-    <GlobalModalContext.Provider value={{ openModal, closeModal }}>
+    <GlobalModalContext.Provider
+      value={{ modalConfigs, setmodalConfigs, openModal, closeModal }}
+    >
       {props.children}
     </GlobalModalContext.Provider>
   )
