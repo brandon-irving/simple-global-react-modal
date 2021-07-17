@@ -1,6 +1,17 @@
 import React from 'react'
-import styles from './styles.module.css'
+import {
+  GlobalModalProvider as Provider,
+  useGlobalModal as useModal
+} from './globalModalContext'
+import Modal from './modal'
 
-export const ExampleComponent = ({ text }) => {
-  return <div className={styles.test}>Example Component: {text}</div>
+export const GlobalModalProvider = (props) => {
+  return (
+    <Provider {...props}>
+      {props.children}
+      <Modal />
+    </Provider>
+  )
 }
+
+export const useGlobalModal = (props) => useModal(props)
