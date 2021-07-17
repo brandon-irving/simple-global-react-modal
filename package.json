@@ -1,10 +1,10 @@
 {
-  "name": "react-global-modal",
+  "name": "simple-global-react-modal",
   "version": "1.0.0",
-  "description": "launch modals without the bloat",
+  "description": "launch gorgeous modals from anywhere without the bloat",
   "author": "brandon-irving",
   "license": "MIT",
-  "repository": "brandon-irving/react-global-modal",
+  "repository": "brandon-irving/simple-global-react-modal",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",

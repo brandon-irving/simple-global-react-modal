@@ -4,7 +4,7 @@ const sizeMapper = {
   lg: ['650px', '500px'],
   xl: ['850px', '700px']
 }
-export const modalDialogCss = (size, isModalInFront) => ({
+export const modalDialogCss = (size, isModalInFront, customSize) => ({
   visibility: isModalInFront ? 'visible' : 'hidden',
   maxWidth: sizeMapper[size][0],
   minWidth: sizeMapper[size][0],
@@ -20,7 +20,8 @@ export const modalDialogCss = (size, isModalInFront) => ({
   left: '50%',
   padding: '15px',
   borderRadius: '10px',
-  transform: 'translate(-50%, -50%)'
+  transform: 'translate(-50%, -50%)',
+  ...customSize
 })
 
 export const modalContentCss = (size) => ({

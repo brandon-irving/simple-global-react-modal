@@ -14,6 +14,7 @@ const InternalModal = (props) => {
   const {
     modal: {
       size = 'md',
+      customSize = {},
       header,
       body,
       title,
@@ -32,7 +33,10 @@ const InternalModal = (props) => {
   }
   return (
     <React.Fragment>
-      <div id='lw-modal' style={modalDialogCss(size, isModalInFront)}>
+      <div
+        id='lw-modal'
+        style={modalDialogCss(size, isModalInFront, customSize)}
+      >
         <div id='lw-modal-content' style={modalContentCss()}>
           {!!desired && (
             <div id='lw-modal-header' style={headerCss}>
