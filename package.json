@@ -49,5 +49,16 @@
   },
   "files": [
     "dist"
+  ],
+  "tags": [
+    "react",
+    "modal",
+    "dialog"
+  ],
+  "keywords": [
+    "react",
+    "react-component",
+    "modal",
+    "dialog"
   ]
 }
