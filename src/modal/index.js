@@ -15,6 +15,14 @@ const InternalModal = (props) => {
     modal: {
       size = 'md',
       customSize = {},
+      customClassNames = {
+        modal: [],
+        header: [],
+        content: [],
+        body: [],
+        footer: [],
+        background: ['test-class']
+      },
       header,
       body,
       title,
@@ -31,29 +39,72 @@ const InternalModal = (props) => {
   function handleClose() {
     closeOnBackgroundClick && closeModal()
   }
+
+  const {
+    modal: modalClassNames,
+    header: headerClassNames,
+    content: contentClassNames,
+    body: bodyClassNames,
+    footer: footerClassNames,
+    background: backgroundClassNames
+  } = customClassNames
+  const classNameGenerator = (classNameArray) =>
+    classNameArray.join().replace(',', ' ')
+
+  const styleProps = (classNameArray, defaultStyle) => {
+    return classNameArray.length
+      ? { className: classNameGenerator(classNameArray) }
+      : { style: defaultStyle }
+  }
+
   return (
     <React.Fragment>
       <div
         id='lw-modal'
-        style={modalDialogCss(size, isModalInFront, customSize)}
+        {...styleProps(
+          modalClassNames,
+          modalDialogCss(size, isModalInFront, customSize)
+        )}
       >
-        <div id='lw-modal-content' style={modalContentCss()}>
+        <div
+          id='lw-modal-content'
+          {...styleProps(contentClassNames, modalContentCss)}
+        >
           {!!desired && (
-            <div id='lw-modal-header' style={headerCss}>
+            <div
+              id='lw-modal-header'
+              {...styleProps(headerClassNames, headerCss)}
+            >
               {desired}
             </div>
           )}
-          <div id='lw-modal-body' style={modalBodyCss}>
+          <div id='lw-modal-body' {...styleProps(bodyClassNames, modalBodyCss)}>
             {body}
           </div>
           {!!footer && (
-            <div id='lw-modal-footer' style={modalFooterCss}>
+            <div
+              id='lw-modal-footer'
+              {...styleProps(footerClassNames, modalFooterCss)}
+            >
               {footer}
             </div>
           )}
         </div>
       </div>
-      <div style={bgCss} onClick={handleClose} />
+      <div
+        ref={(el) => {
+          if (el) {
+            el.style.setProperty('z-index', '9998', 'important')
+            el.style.setProperty('position', 'absolute', 'important')
+            el.style.setProperty('width', '100%', 'important')
+            el.style.setProperty('height', '100%', 'important')
+            el.style.setProperty('top', 0, 'important')
+            el.style.setProperty('left', 0, 'important')
+          }
+        }}
+        {...styleProps(backgroundClassNames, bgCss)}
+        onClick={handleClose}
+      />
     </React.Fragment>
   )
 }

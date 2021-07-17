@@ -12,3 +12,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.test-class {
+  background-color: black;
+}
+
+.another-test {
+  background-color: black;
+}
+/* 'test-class', 'another-test' */

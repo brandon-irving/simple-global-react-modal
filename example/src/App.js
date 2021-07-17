@@ -1,6 +1,6 @@
 import React from 'react'
 import { GlobalModalProvider, useGlobalModal } from 'react-global-modal'
-
+import './index.css'
 const App = () => {
   return (
     <GlobalModalProvider>

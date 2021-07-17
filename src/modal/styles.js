@@ -24,19 +24,13 @@ export const modalDialogCss = (size, isModalInFront, customSize) => ({
   ...customSize
 })
 
-export const modalContentCss = (size) => ({
+export const modalContentCss = {
   display: 'flex',
   flexDirection: 'column',
   width: '100%'
-})
+}
 
 export const bgCss = {
-  zIndex: '9998',
-  position: 'absolute',
-  width: '100%',
-  height: '100%',
-  top: 0,
-  left: 0,
   background: 'rgba(0, 0, 0, 0.24)'
 }
 
