@@ -1,7 +1,7 @@
-import { ExampleComponent } from '.'
+import { GlobalModalProvider } from '.'
 
-describe('ExampleComponent', () => {
+describe('GlobalModalProvider', () => {
   it('is truthy', () => {
-    expect(ExampleComponent).toBeTruthy()
+    expect(GlobalModalProvider).toBeTruthy()
   })
 })
