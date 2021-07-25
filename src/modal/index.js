@@ -7,7 +7,8 @@ import {
   headerCss,
   modalBodyCss,
   modalFooterCss,
-  modalTitle
+  modalTitle,
+  closeButtonCss
 } from './styles'
 
 const defaultClassNames = {
@@ -30,7 +31,8 @@ const InternalModal = (props) => {
       body,
       title,
       footer,
-      closeOnBackgroundClick = true
+      closeOnBackgroundClick = true,
+      closeButton = true
     },
     isModalInFront
   } = props
@@ -74,14 +76,15 @@ const InternalModal = (props) => {
           id='lw-modal-content'
           {...styleProps(contentClassNames, modalContentCss)}
         >
-          {!!desired && (
-            <div
-              id='lw-modal-header'
-              {...styleProps(headerClassNames, headerCss)}
-            >
-              {desired}
+          <div
+            id='lw-modal-header'
+            {...styleProps(headerClassNames, headerCss)}
+          >
+            {!!desired && desired}
+            <div onClick={handleClose} style={closeButtonCss(closeButton)}>
+              ╳
             </div>
-          )}
+          </div>
           <div id='lw-modal-body' {...styleProps(bodyClassNames, modalBodyCss)}>
             {body}
           </div>

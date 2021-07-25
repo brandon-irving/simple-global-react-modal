@@ -79,3 +79,12 @@ export const modalTitle = {
   fontSize: 'calc(1.275rem + .3vw)',
   fontWeight: 'bold'
 }
+export const closeButtonCss = (show) => ({
+  visibility: show ? 'visible' : 'hidden',
+  fontSize: '12pt',
+  fontWeight: 'bold',
+  cursor: 'pointer',
+  width: '25px',
+  height: '25px',
+  textAlign: 'center'
+})
