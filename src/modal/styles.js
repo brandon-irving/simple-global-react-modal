@@ -13,12 +13,13 @@ export const modalDialogCss = ({
   size,
   isModalInFront,
   customSize,
-  position
+  position,
+  fullScreen
 }) => ({
   visibility: isModalInFront ? 'visible' : 'hidden',
-  maxWidth: sizeMapper[size],
-  minWidth: sizeMapper[size],
-  minHeight: 'auto',
+  maxWidth: fullScreen ? '100vw' : sizeMapper[size],
+  minWidth: fullScreen ? '100vw' : sizeMapper[size],
+  minHeight: fullScreen ? '100vh' : 'auto',
   margin: '1.75rem auto',
   zIndex: '9999',
   position: 'fixed',
@@ -44,16 +45,16 @@ export const bgCss = {
   background: 'rgba(0, 0, 0, 0.24)'
 }
 
-export const headerCss = {
+export const headerCss = (fullScreen) => ({
   display: 'flex',
   flexShrink: 0,
   alignItems: 'center',
   justifyContent: 'space-between',
-  padding: '.5rem',
+  padding: fullScreen ? '1.5rem' : '.5rem',
   borderBottom: '1px solid #dee2e6',
   borderTopLeftRadius: 'calc(.3rem - 1px)',
   borderTopRightRadius: 'calc(.3rem - 1px)'
-}
+})
 
 export const modalBodyCss = {
   position: 'relative',

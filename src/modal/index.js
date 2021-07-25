@@ -32,7 +32,8 @@ const InternalModal = (props) => {
       title,
       footer,
       closeOnBackgroundClick = true,
-      closeButton = true
+      closeButton = true,
+      fullScreen = false
     },
     isModalInFront
   } = props
@@ -69,22 +70,30 @@ const InternalModal = (props) => {
         id='lw-modal'
         {...styleProps(
           modalClassNames,
-          modalDialogCss({ size, isModalInFront, customSize, position })
+          modalDialogCss({
+            size,
+            isModalInFront,
+            customSize,
+            position,
+            fullScreen
+          })
         )}
       >
         <div
           id='lw-modal-content'
           {...styleProps(contentClassNames, modalContentCss)}
         >
-          <div
-            id='lw-modal-header'
-            {...styleProps(headerClassNames, headerCss)}
-          >
-            {!!desired && desired}
-            <div onClick={handleClose} style={closeButtonCss(closeButton)}>
-              ╳
+          {isModalInFront && (
+            <div
+              id='lw-modal-header'
+              {...styleProps(headerClassNames, headerCss(fullScreen))}
+            >
+              {!!desired && desired}
+              <div onClick={handleClose} style={closeButtonCss(closeButton)}>
+                ╳
+              </div>
             </div>
-          </div>
+          )}
           <div id='lw-modal-body' {...styleProps(bodyClassNames, modalBodyCss)}>
             {body}
           </div>
