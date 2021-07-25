@@ -1,3 +1,13 @@
+.delay {
+  font-size: 14px;
+  transition-property: font-size;
+  transition-duration: 4s;
+  transition-delay: 2s;
+}
+
+.delay:hover {
+  font-size: 36px;
+}
 body {
   margin: 0;
   padding: 0;

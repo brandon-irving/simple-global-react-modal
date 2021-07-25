@@ -1,13 +1,23 @@
 const sizeMapper = {
-  sm: ['250px', '100px'],
-  md: ['450px', '300px'],
-  lg: ['650px', '500px'],
-  xl: ['850px', '700px']
+  sm: '40vw',
+  md: '50vw',
+  lg: '60vw',
+  xl: '70vw'
 }
-export const modalDialogCss = (size, isModalInFront, customSize) => ({
+const positionMapper = {
+  bottom: '60%',
+  center: '45%',
+  top: '20%'
+}
+export const modalDialogCss = ({
+  size,
+  isModalInFront,
+  customSize,
+  position
+}) => ({
   visibility: isModalInFront ? 'visible' : 'hidden',
-  maxWidth: sizeMapper[size][0],
-  minWidth: sizeMapper[size][0],
+  maxWidth: sizeMapper[size],
+  minWidth: sizeMapper[size],
   minHeight: 'auto',
   margin: '1.75rem auto',
   zIndex: '9999',
@@ -16,7 +26,7 @@ export const modalDialogCss = (size, isModalInFront, customSize) => ({
   overflowY: 'auto',
   outline: 0,
   background: '#fff',
-  top: '50%',
+  top: positionMapper[position] || '45%',
   left: '50%',
   padding: '15px',
   borderRadius: '10px',

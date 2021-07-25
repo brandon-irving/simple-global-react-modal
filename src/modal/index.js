@@ -25,6 +25,7 @@ const InternalModal = (props) => {
       size = 'md',
       customSize = {},
       customClassNames = {},
+      position = 'center',
       header,
       body,
       title,
@@ -66,7 +67,7 @@ const InternalModal = (props) => {
         id='lw-modal'
         {...styleProps(
           modalClassNames,
-          modalDialogCss(size, isModalInFront, customSize)
+          modalDialogCss({ size, isModalInFront, customSize, position })
         )}
       >
         <div

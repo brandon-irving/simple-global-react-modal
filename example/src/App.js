@@ -29,22 +29,44 @@ const Button = (props) => {
   )
 }
 
+const ModalContent3 = () => {
+  return 'Fin..'
+}
+
 const ModalContent2 = () => {
-  return <div>You could add as many as you like!</div>
+  const { openModal, closeModal } = useGlobalModal()
+  function handleClick() {
+    openModal({
+      size: 'xl',
+      body: <ModalContent3 />,
+      title: 'X-Large Modal',
+      footer: <Button onClick={closeModal}>Close</Button>
+    })
+  }
+  return (
+    <div>
+      <h2>Im medium and at the bottom!</h2>
+      <div>
+        <button onClick={handleClick}>Open Modal</button>
+      </div>
+    </div>
+  )
 }
 
 const ModalContent1 = () => {
   const { openModal, closeModal } = useGlobalModal()
   function handleClick() {
     openModal({
+      position: 'bottom',
+      size: 'md',
       body: <ModalContent2 />,
-      title: 'Another one...',
+      title: 'Medium Modal',
       footer: <Button onClick={closeModal}>Close</Button>
     })
   }
   return (
     <div>
-      <h2>No dependencies! just react and css!</h2>
+      <h2>Im small and centered!</h2>
       <div>
         <button onClick={handleClick}>Open Modal</button>
       </div>
@@ -56,8 +78,9 @@ const Home = () => {
   const { openModal, closeModal } = useGlobalModal()
   function handleClick() {
     openModal({
+      size: 'sm',
       body: <ModalContent1 />,
-      title: 'Simple Title',
+      title: 'Small Modal',
       footer: <Button onClick={closeModal}>Close</Button>
     })
   }
